@@ -8,14 +8,6 @@ class BinarySearchTree
       @left = nil
       @right = nil
     end
-
-    def add_node(value)
-      if value <= @value
-        @left.nil? ? @left = Node.new(value) : @left.add_node(value)
-      elsif value > @value
-        @right.nil? ? @right = Node.new(value) : @right.add_node(value)
-      end
-    end
   end
 
   def initialize(arr)
@@ -27,16 +19,31 @@ class BinarySearchTree
   def build_tree(arr)
     return puts "\nInvalid data." if arr.nil? || !arr.is_a?(Array)
     arr.each do |element|
-      check_root(element)
+      add_node(element)
       @size += 1
     end
   end
 
-  def check_root(value)
+  def add_node(value)
     if @root.nil?
       @root = Node.new(value)
     else
-      @root.add_node(value)
+      temp_root = @root
+
+      until temp_root.nil?
+        parent = temp_root
+        if value < temp_root.value
+          temp_root = temp_root.left
+        else
+          temp_root = temp_root.right
+        end
+      end
+
+      if value < parent.value
+        parent.left = Node.new(value)
+      else
+        parent.right = Node.new(value)
+      end
     end
   end
 end
