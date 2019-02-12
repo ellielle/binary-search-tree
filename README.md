@@ -1,2 +1,2 @@
 ## Search Binary Tree project
-from https://www.theodinproject.com/courses/ruby-programming/lessons/data-structures-and-algorithms                     
+from [The Odin Project](https://www.theodinproject.com/courses/ruby-programming/lessons/data-structures-and-algorithms)                     
